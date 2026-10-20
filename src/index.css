@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Outfit', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Cinzel', 'Cormorant Garamond', serif;
+}
+
+:root {
+  --color-primary: #D4AF37;
+  --color-primary-rgb: 212, 175, 55;
+  --color-primary-light: #FCE7A6;
+  --color-primary-dark: #855E12;
+  --color-accent-bar: #C59B6D;
+  --color-bg-base: #0A0908;
+  --color-bg-surface: #141210;
+  --color-bg-card: #1B1815;
+  --color-border-subtle: rgba(212, 175, 55, 0.22);
+  --color-border-focus: rgba(212, 175, 55, 0.65);
+  --color-glow: rgba(212, 175, 55, 0.35);
+  --color-badge-bg: rgba(212, 175, 55, 0.12);
+  --color-btn-bg: linear-gradient(135deg, #D4AF37 0%, #C59B6D 50%, #B47C44 100%);
+  --color-btn-text: #0A0908;
+  --color-btn-border: #C59B6D;
+  --color-waterline: rgba(212, 175, 55, 0.55);
+  --color-selection: #C59B6D;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-base, #0A0908);
+    color: #F1F5F9;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: var(--color-selection, #D4AF37);
+    color: #000000;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Editorial Serif typography from posters */
+.font-editorial {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: 0.05em;
+}
+
+/* Dynamic Poster Theme Utilities */
+.text-theme {
+  color: var(--color-primary);
+}
+
+.text-theme-light {
+  color: var(--color-primary-light);
+}
+
+.bg-theme {
+  background-color: var(--color-primary);
+}
+
+.bg-theme-card {
+  background-color: var(--color-bg-card);
+}
+
+.bg-theme-surface {
+  background-color: var(--color-bg-surface);
+}
+
+.border-theme {
+  border-color: var(--color-border-subtle);
+}
+
+.border-theme-focus {
+  border-color: var(--color-border-focus);
+}
+
+.theme-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-card:hover {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 10px 30px -10px var(--color-glow);
+}
+
+.theme-glow {
+  box-shadow: 0 0 35px -5px var(--color-glow);
+}
+
+.theme-text-glow {
+  text-shadow: 0 0 20px var(--color-glow);
+}
+
+/* Signature Poster Accent Bar */
+.poster-accent-bar {
+  width: 48px;
+  height: 2px;
+  background-color: var(--color-accent-bar);
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+/* Poster Editorial Button (matching DM TO BOOK luxury border styling) */
+.btn-editorial {
+  border: 1px solid var(--color-border-focus);
+  background: rgba(var(--color-primary-rgb), 0.06);
+  color: #FFFFFF;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.btn-editorial:hover {
+  background: var(--color-primary);
+  color: var(--color-btn-text);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px -2px var(--color-glow);
+}
+
+/* Classic fallback classes redirected to theme vars */
+.text-cyan-glow {
+  text-shadow: 0 0 20px var(--color-glow);
+}
+
+.box-cyan-glow {
+  box-shadow: 0 0 35px -5px var(--color-glow);
+}
+
+/* Waterline sweep effect with dynamic theme color */
+@keyframes waterlineSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+}
+
+.animate-waterline {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-waterline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-waterline), transparent);
+  animation: waterlineSweep 4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+/* Button light sweep on hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090B12;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

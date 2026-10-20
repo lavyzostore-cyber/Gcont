@@ -1,0 +1,6 @@
+{
+  "name": "G Contreras Car Wash | Mobile Detailing",
+  "description": "Premium mobile car wash and automotive detailing serving Bakersfield, Shafter, and Wasco, California. Professional interior, exterior, wheel cleaning, and spot-free finishes delivered straight to your driveway.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
